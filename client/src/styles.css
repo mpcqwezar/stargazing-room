@@ -1,7 +1,12 @@
+:root {
+  /* Tall enough to hold the logo plus its vertical padding */
+  --header-height: 92px;
+}
+
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  padding-top: 100px;
+  padding-top: calc(var(--header-height) + 28px);
   transition: color 0.3s ease, background 0.3s ease;
 }
 
@@ -85,7 +90,8 @@ body {
   right: 0;
   background: #131f33;
   border-bottom: 1px solid rgba(143, 183, 255, 0.1);
-  padding: 16px 40px;
+  /* Uneven vertical padding offsets the logo's own transparent margin */
+  padding: 9px 40px 7px;
   z-index: 1000;
   display: flex;
   align-items: center;
@@ -129,12 +135,15 @@ body {
 
 .header-title {
   margin: 0;
-  font-size: 24px;
-  font-weight: 300;
-  letter-spacing: 0.5px;
-  color: #e6e6e6;
-  white-space: nowrap;
-  font-family: 'Segoe UI', 'Roboto', sans-serif;
+  display: flex;
+  align-items: center;
+  line-height: 0;
+}
+
+.header-logo {
+  display: block;
+  height: 76px;
+  width: auto;
 }
 
 .header-actions {
@@ -150,7 +159,7 @@ body {
 
 .preferences-bar {
   position: fixed;
-  top: 72px; /* высота header */
+  top: var(--header-height);
   left: 0;
   right: 0;
   background: var(--header-bg);
@@ -158,7 +167,29 @@ body {
   padding: 12px 40px;
   z-index: 900;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
+  gap: 12px;
+}
+
+.preferences-bar .controls {
+  flex: 0 1 auto;
+}
+
+.preferences-bar .preferences-toggles {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+}
+
+/* Source checkboxes take the row below the preset buttons */
+.preferences-bar .source-bar {
+  flex: 1 0 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 16px;
 }
 
 /* кнопка Preferences */
@@ -248,6 +279,10 @@ body {
   max-width: 1200px;
   margin: 0 auto 40px auto;
   padding: 0 40px;
+}
+
+.app.sources-open {
+  margin-top: var(--preferences-height, 0px);
 }
 
 .controls {
@@ -434,9 +469,8 @@ a:hover {
   box-shadow: 0 0 20px #00ff00, inset 0 0 20px rgba(0, 255, 0, 0.1);
 }
 
-[data-theme="retro"] .header-title {
-  text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00;
-  letter-spacing: 2px;
+[data-theme="retro"] .header-logo {
+  filter: drop-shadow(0 0 6px #00ff00);
 }
 
 [data-theme="retro"] .controls button {
@@ -609,29 +643,40 @@ a:hover {
 
 /* Mobile responsiveness */
 @media (max-width: 768px) {
-  body {
-    padding-top: 120px;
+  :root {
+    --header-height: 80px;
   }
 
   .header {
-    padding: 12px 20px;
+    padding: 8px 16px;
+    gap: 10px;
+    flex-wrap: wrap;
   }
 
-  .header-title {
-    font-size: 20px;
+  .header-logo {
+    height: 64px;
   }
 
-  .source-bar {
-    top: 70px;
-    padding: 6px 20px;
+  .preferences-bar {
+    padding: 10px 16px;
+  }
+
+  /* Presets share the row with the theme toggle, stretched to fit */
+  .preferences-bar .controls {
+    flex: 1 1 auto;
+  }
+
+  .preferences-bar .controls-buttons {
+    width: 100%;
+  }
+
+  .preferences-bar .controls button {
+    flex: 1;
+    padding: 8px 4px;
   }
 
   .app {
     padding: 0 20px;
-  }
-
-  .app.sources-open {
-    margin-top: 60px;
   }
 
   .news-item {

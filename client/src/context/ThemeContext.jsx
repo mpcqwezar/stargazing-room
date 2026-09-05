@@ -10,11 +10,13 @@ export function ThemeProvider({ children }) {
 
   const [pageTheme, setPageTheme] = useState(null); // null means use global theme
 
+  // What is actually on screen: a page override wins over the global choice.
+  const effectiveTheme = pageTheme !== null ? pageTheme : theme;
+
   useEffect(() => {
     localStorage.setItem("theme", theme);
-    const themeToApply = pageTheme !== null ? pageTheme : theme;
-    document.documentElement.setAttribute("data-theme", themeToApply);
-  }, [theme, pageTheme]);
+    document.documentElement.setAttribute("data-theme", effectiveTheme);
+  }, [theme, effectiveTheme]);
 
   const toggleTheme = () => {
     // Don't toggle theme if we're on a page-specific theme
@@ -28,7 +30,7 @@ export function ThemeProvider({ children }) {
   };
 
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme, pageTheme, setPageTheme }}>
+    <ThemeContext.Provider value={{ theme, effectiveTheme, toggleTheme, pageTheme, setPageTheme }}>
       {children}
     </ThemeContext.Provider>
   );

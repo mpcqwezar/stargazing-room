@@ -22,33 +22,23 @@ function useIsMobile() {
 }
 
 export default function MediaPage({ mediaData, mediaUpdatedAt, onPageChange }) {
-  const { theme, setPageTheme } = useTheme();
+  const { effectiveTheme } = useTheme();
   const [activeTab, setActiveTab] = useState("letterboxd");
   const isMobile = useIsMobile();
   const flickrVisible = !isMobile || activeTab === "flickr";
   const flickrRef = useRef(null);
 
-  // Force dark theme for this page
-  useEffect(() => {
-    setPageTheme('dark');
-  }, [setPageTheme]);
-
-  // Load initial data (if needed for any client-side init)
-  useEffect(() => {
-    // media data is now passed from App
-  }, []);
-
   /* звёзды */
   useEffect(() => {
-    if (theme !== "dark" && theme !== "retro") return;
+    if (effectiveTheme !== "dark" && effectiveTheme !== "retro") return;
 
-    const starInterval = theme === "retro" ? 150 : 1000;
+    const starInterval = effectiveTheme === "retro" ? 150 : 1000;
 
     const interval = setInterval(() => {
       const star = document.createElement("div");
       star.className = "star";
 
-      if (theme === "retro") star.setAttribute("data-retro", "true");
+      if (effectiveTheme === "retro") star.setAttribute("data-retro", "true");
 
       star.style.left = "-10px";
       star.style.top = `${Math.random() * 40}vh`;
@@ -59,7 +49,7 @@ export default function MediaPage({ mediaData, mediaUpdatedAt, onPageChange }) {
     }, starInterval);
 
     return () => clearInterval(interval);
-  }, [theme]);
+  }, [effectiveTheme]);
 
   // Load Flickr embed script once; it watches the DOM for new embeds itself.
   useEffect(() => {

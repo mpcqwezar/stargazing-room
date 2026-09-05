@@ -4,7 +4,7 @@ import gif from "../assets/giphy.gif";
 import music from "../assets/music.mp3";
 
 export default function RetroMedia() {
-  const { theme } = useTheme();
+  const { effectiveTheme } = useTheme();
   const audioRef = useRef(null);
   const [muted, setMuted] = useState(() => {
     try {
@@ -20,7 +20,7 @@ export default function RetroMedia() {
   }, [muted]);
 
   useEffect(() => {
-    if (theme !== "retro") return;
+    if (effectiveTheme !== "retro") return;
     const a = audioRef.current;
     if (!a) return;
     const p = a.play();
@@ -28,7 +28,7 @@ export default function RetroMedia() {
       a.muted = true;
       setMuted(true);
     });
-  }, [theme]);
+  }, [effectiveTheme]);
 
   useEffect(() => {
     const onToggle = (e) => {
@@ -52,7 +52,7 @@ export default function RetroMedia() {
     };
   }, []);
 
-  if (theme !== "retro") return null;
+  if (effectiveTheme !== "retro") return null;
 
   return (
   <div className="retro-media" aria-hidden={true}>

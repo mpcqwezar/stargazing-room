@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import NewsList from "./components/NewsList.jsx";
 import Header from "./components/Header.jsx";
-import SourceBar from "./components/SourceBar.jsx";
+import PreferencesBar from "./components/PreferencesBar.jsx";
 import ScrollToTop from "./components/ScrollToTop.jsx";
 import RetroMedia from "./components/RetroMedia.jsx";
 import MediaPage from "./components/MediaPage.jsx";
@@ -17,7 +17,13 @@ export default function App() {
   const [newsState, setNewsState] = useState({ updatedAt: null, loading: false });
   const [showSources, setShowSources] = useState(false);
   const [media, setMedia] = useState({ letterboxd: [], goodreads: [], updatedAt: null, loading: false });
-  const { theme, setPageTheme } = useTheme();
+  const { theme, effectiveTheme, setPageTheme } = useTheme();
+
+  // Retro belongs to the RSS feed only, and the lists page is always dark.
+  const pageThemeOverride =
+    currentPage === "media" ? "dark"
+      : currentPage !== "news" && theme === "retro" ? "dark"
+        : null;
 
   const loadData = async (endpoint) => {
     try {
@@ -46,16 +52,16 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    if (currentPage === "news") setPageTheme(null);
-  }, [currentPage, setPageTheme]);
+    setPageTheme(pageThemeOverride);
+  }, [pageThemeOverride, setPageTheme]);
 
   useEffect(() => {
-    if (theme !== "dark" && theme !== "retro") return;
-    const starInterval = theme === "retro" ? 150 : 1000;
+    if (effectiveTheme !== "dark" && effectiveTheme !== "retro") return;
+    const starInterval = effectiveTheme === "retro" ? 150 : 1000;
     const interval = setInterval(() => {
       const star = document.createElement("div");
       star.className = "star";
-      if (theme === "retro") star.setAttribute("data-retro", "true");
+      if (effectiveTheme === "retro") star.setAttribute("data-retro", "true");
       star.style.left = "-10px";
       star.style.top = `${Math.random() * 40}vh`;
       star.style.animationDuration = `${2 + Math.random() * 2}s`;
@@ -63,17 +69,17 @@ export default function App() {
       setTimeout(() => star.remove(), 4000);
     }, starInterval);
     return () => clearInterval(interval);
-  }, [theme]);
+  }, [effectiveTheme]);
 
   const filtered = sources.length === 0 ? news : news.filter(n => sources.includes(n.source));
-  const headerProps = { sources, onSourcesChange: setSources, currentPage, onPageChange: setCurrentPage, showSources, onShowSourcesChange: setShowSources, onRefresh: () => { setNewsState(p => ({ ...p, loading: true })); loadData("news"); }, isRefreshing: newsState.loading, onMediaRefresh: () => { setMedia(p => ({ ...p, loading: true })); loadData("media"); }, isMediaRefreshing: media.loading };
+  const headerProps = { currentPage, onPageChange: setCurrentPage, showSources, onShowSourcesChange: setShowSources, onRefresh: () => { setNewsState(p => ({ ...p, loading: true })); loadData("news"); }, isRefreshing: newsState.loading, onMediaRefresh: () => { setMedia(p => ({ ...p, loading: true })); loadData("media"); }, isMediaRefreshing: media.loading };
 
   return (
     <>
       <Header {...headerProps} />
       {currentPage === "news" && (
         <>
-          {showSources && <div className="preferences-bar"><SourceBar value={sources} onChange={setSources} showSources /></div>}
+          {showSources && <PreferencesBar sources={sources} onSourcesChange={setSources} />}
           <RetroMedia />
           <ScrollToTop />
           <div className={`app ${showSources ? "sources-open" : ""}`}>
