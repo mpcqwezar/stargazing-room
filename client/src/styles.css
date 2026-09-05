@@ -1,6 +1,11 @@
 :root {
-  /* Tall enough to hold the logo plus its vertical padding */
   --header-height: 92px;
+  /* Height of the logo's visible artwork, which fills the header vertically.
+     The shares below are the artwork and the transparent top band of logo.png,
+     measured from its alpha channel, and are used to crop the empty margin. */
+  --logo-art-height: 80px;
+  --logo-art-share: 0.869;
+  --logo-pad-top-share: 0.049;
 }
 
 body {
@@ -90,8 +95,7 @@ body {
   right: 0;
   background: #131f33;
   border-bottom: 1px solid rgba(143, 183, 255, 0.1);
-  /* Uneven vertical padding offsets the logo's own transparent margin */
-  padding: 9px 40px 7px;
+  padding: 6px 40px;
   z-index: 1000;
   display: flex;
   align-items: center;
@@ -136,14 +140,20 @@ body {
 .header-title {
   margin: 0;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   line-height: 0;
+  /* Clips the logo's transparent margin, pulled up by the rule below */
+  height: var(--logo-art-height);
+  overflow: hidden;
 }
 
 .header-logo {
   display: block;
-  height: 76px;
+  height: calc(var(--logo-art-height) / var(--logo-art-share));
   width: auto;
+  margin-top: calc(
+    var(--logo-art-height) / var(--logo-art-share) * var(--logo-pad-top-share) * -1
+  );
 }
 
 .header-actions {
@@ -469,7 +479,8 @@ a:hover {
   box-shadow: 0 0 20px #00ff00, inset 0 0 20px rgba(0, 255, 0, 0.1);
 }
 
-[data-theme="retro"] .header-logo {
+/* On the title, not the image, so the glow is not cut off by the crop */
+[data-theme="retro"] .header-title {
   filter: drop-shadow(0 0 6px #00ff00);
 }
 
@@ -645,16 +656,16 @@ a:hover {
 @media (max-width: 768px) {
   :root {
     --header-height: 80px;
+    /* mobile_logo.png is trimmed much tighter than the desktop file */
+    --logo-art-height: 68px;
+    --logo-art-share: 0.978;
+    --logo-pad-top-share: 0.015;
   }
 
   .header {
-    padding: 8px 16px;
+    padding: 6px 16px;
     gap: 10px;
     flex-wrap: wrap;
-  }
-
-  .header-logo {
-    height: 64px;
   }
 
   .preferences-bar {
@@ -1033,15 +1044,10 @@ a:hover {
 }
 
 /* Blog styles */
-.blog-page {
-  padding-top: 20px;
-}
-
 .blog-list {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  margin-top: 8px;
 }
 
 .blog-post {

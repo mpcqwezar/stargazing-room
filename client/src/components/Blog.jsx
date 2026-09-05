@@ -4,7 +4,7 @@ import posts from "../data/posts.json";
 export default function Blog() {
   return (
     <div className="app blog-page">
-      <div className="media-header"><h2 className="column-title">Бложик</h2></div>
+      <h2 className="column-title">Бложик</h2>
       <div className="blog-list">
         {posts.map(({ id, title, date, blocks }) => {
           const img = blocks.find(b => b.type === "image");
