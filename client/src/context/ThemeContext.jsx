@@ -2,35 +2,33 @@ import React, { createContext, useState, useEffect } from "react";
 
 export const ThemeContext = createContext();
 
+const BASE_THEMES = ["dark", "light"];
+
 export function ThemeProvider({ children }) {
   const [theme, setTheme] = useState(() => {
     const stored = localStorage.getItem("theme");
     return stored || "dark";
   });
 
-  const [pageTheme, setPageTheme] = useState(null); // null means use global theme
+  // Pages opt into retro; elsewhere a stored retro choice falls back to dark.
+  const [retroAllowed, setRetroAllowed] = useState(false);
 
-  // What is actually on screen: a page override wins over the global choice.
-  const effectiveTheme = pageTheme !== null ? pageTheme : theme;
+  const effectiveTheme = theme === "retro" && !retroAllowed ? "dark" : theme;
 
   useEffect(() => {
     localStorage.setItem("theme", theme);
     document.documentElement.setAttribute("data-theme", effectiveTheme);
   }, [theme, effectiveTheme]);
 
-  const toggleTheme = () => {
-    // Don't toggle theme if we're on a page-specific theme
-    if (pageTheme !== null) return;
-
-    setTheme(prev => {
-      if (prev === "dark") return "light";
-      if (prev === "light") return "retro";
-      return "dark";
-    });
-  };
+  // Cycling from what is on screen keeps the button usable on pages without retro.
+  const cycle = retroAllowed ? [...BASE_THEMES, "retro"] : BASE_THEMES;
+  const nextTheme = cycle[(cycle.indexOf(effectiveTheme) + 1) % cycle.length];
+  const toggleTheme = () => setTheme(nextTheme);
 
   return (
-    <ThemeContext.Provider value={{ theme, effectiveTheme, toggleTheme, pageTheme, setPageTheme }}>
+    <ThemeContext.Provider
+      value={{ theme, effectiveTheme, nextTheme, toggleTheme, retroAllowed, setRetroAllowed }}
+    >
       {children}
     </ThemeContext.Provider>
   );

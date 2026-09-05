@@ -1,10 +1,15 @@
 import React from "react";
 import PageSelector from "./PageSelector.jsx";
+import { useTheme } from "../context/ThemeContext.jsx";
+
+// The button shows where the next click leads, not the current theme.
+const THEME_ICONS = { dark: "🌙", light: "☀️", retro: "👾" };
 
 export default function Header({ onRefresh, isRefreshing, onMediaRefresh, isMediaRefreshing, showSources, onShowSourcesChange, currentPage, onPageChange }) {
   const isNews = currentPage === "news";
   const isMedia = currentPage === "media";
   const assets = import.meta.env.BASE_URL;
+  const { nextTheme, toggleTheme } = useTheme();
 
   return (
     <header className="header">
@@ -34,6 +39,13 @@ export default function Header({ onRefresh, isRefreshing, onMediaRefresh, isMedi
             {isMediaRefreshing ? <span className="spinner" aria-hidden="true" /> : '⟳'}
           </button>
         )}
+        <button
+          className="theme-toggle icon-btn"
+          onClick={toggleTheme}
+          aria-label={`Switch to ${nextTheme} theme`}
+        >
+          {THEME_ICONS[nextTheme]}
+        </button>
         <PageSelector currentPage={currentPage} onPageChange={onPageChange} />
       </div>
     </header>

@@ -4,8 +4,7 @@ import SourceBar from "./SourceBar.jsx";
 import { useTheme } from "../context/ThemeContext.jsx";
 
 export default function PreferencesBar({ sources, onSourcesChange }) {
-  const { theme, effectiveTheme, toggleTheme, pageTheme } = useTheme();
-  const themeIcon = { dark: "☀️", light: "👾" }[theme] || "🌙";
+  const { effectiveTheme } = useTheme();
   const barRef = useRef(null);
 
   // The bar is fixed, so the feed below needs to know how tall it currently is.
@@ -26,17 +25,11 @@ export default function PreferencesBar({ sources, onSourcesChange }) {
   return (
     <div className="preferences-bar" ref={barRef}>
       <SourceFilter value={sources} onChange={onSourcesChange} />
-      <div className="preferences-toggles">
-        {effectiveTheme === "retro" && <RetroMuteButton />}
-        <button
-          className="theme-toggle icon-btn"
-          onClick={toggleTheme}
-          disabled={pageTheme !== null}
-          aria-label="Toggle theme"
-        >
-          {themeIcon}
-        </button>
-      </div>
+      {effectiveTheme === "retro" && (
+        <div className="preferences-toggles">
+          <RetroMuteButton />
+        </div>
+      )}
       <SourceBar value={sources} onChange={onSourcesChange} showSources />
     </div>
   );

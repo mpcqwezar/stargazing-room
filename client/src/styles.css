@@ -718,11 +718,6 @@ a:hover {
   box-shadow: 0 0 12px var(--button-glow);
 }
 
-.theme-toggle:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
 .page-mode-toggle {
   font-size: 18px;
 }
@@ -1008,6 +1003,14 @@ a:hover {
     border-color: var(--button-border-hover);
     color: var(--text-primary);
     box-shadow: 0 0 8px var(--button-glow);
+  }
+
+  /* The shared button palette stays navy in light mode because it dresses the
+     dark header; the tab track sits on the light page and needs its own. */
+  [data-theme="light"] .media-tab.active {
+    background: #ffffff;
+    border-color: rgba(0, 0, 0, 0.15);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
   }
 
   .mobile-tab-panel:not(.mobile-active),

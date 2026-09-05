@@ -17,13 +17,7 @@ export default function App() {
   const [newsState, setNewsState] = useState({ updatedAt: null, loading: false });
   const [showSources, setShowSources] = useState(false);
   const [media, setMedia] = useState({ letterboxd: [], goodreads: [], updatedAt: null, loading: false });
-  const { theme, effectiveTheme, setPageTheme } = useTheme();
-
-  // Retro belongs to the RSS feed only, and the lists page is always dark.
-  const pageThemeOverride =
-    currentPage === "media" ? "dark"
-      : currentPage !== "news" && theme === "retro" ? "dark"
-        : null;
+  const { effectiveTheme, setRetroAllowed } = useTheme();
 
   const loadData = async (endpoint) => {
     try {
@@ -51,9 +45,10 @@ export default function App() {
     return () => { clearInterval(newsId); clearInterval(mediaId); };
   }, []);
 
+  // Retro belongs to the RSS feed only.
   useEffect(() => {
-    setPageTheme(pageThemeOverride);
-  }, [pageThemeOverride, setPageTheme]);
+    setRetroAllowed(currentPage === "news");
+  }, [currentPage, setRetroAllowed]);
 
   useEffect(() => {
     if (effectiveTheme !== "dark" && effectiveTheme !== "retro") return;
