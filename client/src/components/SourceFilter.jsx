@@ -6,8 +6,7 @@ const SOURCES = [
   "DTF",
   "Meduza",
   "Wowhead",
-  "Standard",
-  "УНИАН"
+  "Standard"
 ];
 
 export default function SourceFilter({ value = [], onChange }) {
@@ -25,7 +24,7 @@ export default function SourceFilter({ value = [], onChange }) {
   }
 
   function setPolitics() {
-    const newValue = ["Meduza", "УНИАН", "Standard"];
+    const newValue = ["Meduza", "Standard"];
     setInternalValue(newValue);
     onChange?.(newValue);
   }

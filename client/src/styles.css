@@ -576,6 +576,19 @@ a:hover {
   box-shadow: 0 0 12px #00ff00;
 }
 
+/* Reserve a gutter for the fixed GIF so it never sits on top of the news */
+@media (min-width: 900px) {
+  [data-theme="retro"] .app {
+    padding-left: 220px;
+  }
+}
+
+@media (max-width: 899px) {
+  [data-theme="retro"] .retro-media {
+    display: none;
+  }
+}
+
 [data-theme="retro"] .retro-music-toggle {
   background: #000055;
   border: 2px solid #00ff00;
@@ -672,6 +685,10 @@ a:hover {
   max-width: 1400px;
   margin: 0 auto 40px auto;
   padding: 0 40px;
+}
+
+.media-tabs {
+  display: none;
 }
 
 .media-header {
@@ -908,15 +925,48 @@ a:hover {
     padding: 0 20px;
   }
 
+  .media-tabs {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 20px;
+    padding: 4px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+  }
+
+  .media-tab {
+    flex: 1;
+    min-width: 0;
+    padding: 10px 4px;
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-size: 13px;
+  }
+
+  .media-tab.active {
+    background: var(--button-bg-active);
+    border-color: var(--button-border-hover);
+    color: var(--text-primary);
+    box-shadow: 0 0 8px var(--button-glow);
+  }
+
+  .mobile-tab-panel:not(.mobile-active),
+  .media-right-section:not(.mobile-active) {
+    display: none;
+  }
+
   .media-item {
     flex-direction: column;
     padding: 10px;
   }
 
   .media-preview {
-    width: 100%;
-    height: auto;
-    max-height: 150px;
+    width: 80px;
+    height: 80px;
   }
 
   .media-columns {

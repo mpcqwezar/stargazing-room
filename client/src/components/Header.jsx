@@ -11,7 +11,7 @@ export default function Header({ sources, onSourcesChange, onRefresh, isRefreshi
 
   return (
     <header className="header">
-      <h1 className="header-title">Комната с видом на звёзд</h1>
+      <h1 className="header-title">Комната с видом на звёзды</h1>
       {isNews && <SourceFilter value={sources} onChange={onSourcesChange} />}
       <div className="header-actions">
         {isNews && (

@@ -8,10 +8,12 @@ import MediaPage from "./components/MediaPage.jsx";
 import Blog from "./components/Blog.jsx";
 import { useTheme } from "./context/ThemeContext.jsx";
 
+const DEFAULT_GEEK_SOURCES = ["Shazoo", "StopGame", "DTF", "Wowhead"];
+
 export default function App() {
   const [currentPage, setCurrentPage] = useState("blog");
   const [news, setNews] = useState([]);
-  const [sources, setSources] = useState([]);
+  const [sources, setSources] = useState(DEFAULT_GEEK_SOURCES);
   const [newsState, setNewsState] = useState({ updatedAt: null, loading: false });
   const [showSources, setShowSources] = useState(false);
   const [media, setMedia] = useState({ letterboxd: [], goodreads: [], updatedAt: null, loading: false });

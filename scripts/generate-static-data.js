@@ -8,7 +8,6 @@ import { fetchMeduzaNews } from "../src/fetchers/meduza.js";
 import { fetchShazooNews } from "../src/fetchers/shazoo.js";
 import { fetchStandardNews } from "../src/fetchers/standard.js";
 import { fetchStopGameNews } from "../src/fetchers/stopgame.js";
-import { fetchUnianNews } from "../src/fetchers/unian.js";
 import { fetchWowheadNews } from "../src/fetchers/wowhead.js";
 
 const outputDirectory = path.resolve("client/public/data");
@@ -30,8 +29,7 @@ const news = [
   ...(await safe(fetchStopGameNews, "StopGame")),
   ...(await safe(fetchWowheadNews, "Wowhead")),
   ...(await safe(fetchStandardNews, "Standard")),
-  ...(await safe(fetchMeduzaNews, "Meduza")),
-  ...(await safe(fetchUnianNews, "УНИАН"))
+  ...(await safe(fetchMeduzaNews, "Meduza"))
 ].sort((a, b) => b.publishedAt - a.publishedAt);
 
 const letterboxd = (await safe(fetchLetterboxd, "Letterboxd"))

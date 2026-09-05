@@ -12,7 +12,6 @@ import { fetchStopGameNews } from "./fetchers/stopgame.js";
 import { fetchWowheadNews } from "./fetchers/wowhead.js";
 import { fetchStandardNews } from "./fetchers/standard.js";
 import { fetchMeduzaNews } from "./fetchers/meduza.js";
-import { fetchUnianNews } from "./fetchers/unian.js";
 import { fetchLetterboxd } from "./fetchers/letterboxd.js";
 import { fetchGoodreads } from "./fetchers/goodreads.js";
 
@@ -37,8 +36,7 @@ async function updateNews() {
     ...(await safe(fetchStopGameNews, "StopGame")),
     ...(await safe(fetchWowheadNews, "Wowhead")),
     ...(await safe(fetchStandardNews, "Standard")),
-    ...(await safe(fetchMeduzaNews, "Meduza")),
-    ...(await safe(fetchUnianNews, "УНИАН"))
+    ...(await safe(fetchMeduzaNews, "Meduza"))
   ];
 
   cache.news = all.sort((a, b) => b.publishedAt - a.publishedAt);

@@ -1,5 +1,5 @@
 import React from "react"; 
-const SOURCES = [ "Shazoo", "StopGame", "DTF", "Meduza", "Wowhead", "Standard", "УНИАН" ]; 
+const SOURCES = [ "Shazoo", "StopGame", "DTF", "Meduza", "Wowhead", "Standard" ]; 
 export default function SourceBar({ value = [], onChange, showSources }) 
 { 
   if (!showSources) return null; 
