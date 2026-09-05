@@ -1,0 +1,19 @@
+{
+  "name": "news-aggregator",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "node src/server.js",
+    "client": "npm run dev --prefix client",
+    "dev": "concurrently \"npm start\" \"npm run client\"",
+    "generate:data": "node scripts/generate-static-data.js",
+    "build:pages": "npm run generate:data && npm run build --prefix client"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "rss-parser": "^3.13.0"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0"
+  }
+}
