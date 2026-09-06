@@ -7,8 +7,21 @@ import RetroMedia from "./components/RetroMedia.jsx";
 import MediaPage from "./components/MediaPage.jsx";
 import Blog from "./components/Blog.jsx";
 import { useTheme } from "./context/ThemeContext.jsx";
+import { LIVE_API_BASE } from "./config.js";
 
 const DEFAULT_GEEK_SOURCES = ["Shazoo", "StopGame", "DTF", "Wowhead"];
+
+async function fetchJson(url) {
+  const res = await fetch(url, { cache: "no-store" });
+  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  return res.json();
+}
+
+function dataUrl(endpoint) {
+  if (import.meta.env.DEV) return `/api/${endpoint}`;
+  if (LIVE_API_BASE) return `${LIVE_API_BASE}/api/${endpoint}`;
+  return `${import.meta.env.BASE_URL}data/${endpoint}.json`;
+}
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState("blog");
@@ -19,31 +32,45 @@ export default function App() {
   const [media, setMedia] = useState({ letterboxd: [], goodreads: [], updatedAt: null, loading: false });
   const { effectiveTheme, setRetroAllowed } = useTheme();
 
-  // updatedAt comes from the feed collector (API / news.json), not from the click.
+  // Prefer the live Worker; fall back to static JSON if it is down.
   const loadData = async (endpoint) => {
-    const dataUrl = import.meta.env.DEV
-      ? `/api/${endpoint}`
-      : `${import.meta.env.BASE_URL}data/${endpoint}.json`;
+    const primary = dataUrl(endpoint);
+    const fallback =
+      !import.meta.env.DEV && LIVE_API_BASE
+        ? `${import.meta.env.BASE_URL}data/${endpoint}.json`
+        : null;
+
     try {
-      const res = await fetch(dataUrl, { cache: "no-store" });
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      const data = await res.json();
-      if (endpoint === "news") {
-        setNews(data.news);
-        setNewsState({ updatedAt: data.updatedAt, loading: false });
-      } else {
-        setMedia(prev => ({
-          ...prev,
-          letterboxd: data.letterboxd || [],
-          goodreads: data.goodreads || [],
-          updatedAt: data.updatedAt,
-          loading: false
-        }));
-      }
+      const data = await fetchJson(primary);
+      applyData(endpoint, data);
     } catch (e) {
-      console.error(`Failed to load ${endpoint}:`, e);
+      console.error(`Failed to load ${endpoint} from ${primary}:`, e);
+      if (fallback) {
+        try {
+          const data = await fetchJson(fallback);
+          applyData(endpoint, data);
+          return;
+        } catch (fallbackError) {
+          console.error(`Fallback failed for ${endpoint}:`, fallbackError);
+        }
+      }
       if (endpoint === "news") setNewsState(prev => ({ ...prev, loading: false }));
       else setMedia(prev => ({ ...prev, loading: false }));
+    }
+  };
+
+  const applyData = (endpoint, data) => {
+    if (endpoint === "news") {
+      setNews(data.news || []);
+      setNewsState({ updatedAt: data.updatedAt, loading: false });
+    } else {
+      setMedia(prev => ({
+        ...prev,
+        letterboxd: data.letterboxd || [],
+        goodreads: data.goodreads || [],
+        updatedAt: data.updatedAt,
+        loading: false
+      }));
     }
   };
 
