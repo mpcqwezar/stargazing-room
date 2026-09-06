@@ -23,7 +23,7 @@ Open <http://localhost:5173/stargazing-room/>.
 
 The `Deploy to GitHub Pages` workflow builds and deploys the site whenever
 `main` changes. It also refreshes the static news and media feeds every
-10 minutes, so GitHub Pages does not need a separate backend.
+5 minutes, so GitHub Pages does not need a separate backend.
 
 After the first push, open the repository's **Settings → Pages** and choose
 **GitHub Actions** as the source. The site will be available at

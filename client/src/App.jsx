@@ -19,8 +19,7 @@ export default function App() {
   const [media, setMedia] = useState({ letterboxd: [], goodreads: [], updatedAt: null, loading: false });
   const { effectiveTheme, setRetroAllowed } = useTheme();
 
-  // Timestamps mark when we last pulled the data: a refresh has to move them
-  // even when the payload itself is unchanged. Failures leave the old time.
+  // updatedAt comes from the feed collector (API / news.json), not from the click.
   const loadData = async (endpoint) => {
     const dataUrl = import.meta.env.DEV
       ? `/api/${endpoint}`
@@ -29,12 +28,17 @@ export default function App() {
       const res = await fetch(dataUrl, { cache: "no-store" });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const data = await res.json();
-      const updatedAt = new Date().toISOString();
       if (endpoint === "news") {
         setNews(data.news);
-        setNewsState({ updatedAt, loading: false });
+        setNewsState({ updatedAt: data.updatedAt, loading: false });
       } else {
-        setMedia(prev => ({ ...prev, letterboxd: data.letterboxd || [], goodreads: data.goodreads || [], updatedAt, loading: false }));
+        setMedia(prev => ({
+          ...prev,
+          letterboxd: data.letterboxd || [],
+          goodreads: data.goodreads || [],
+          updatedAt: data.updatedAt,
+          loading: false
+        }));
       }
     } catch (e) {
       console.error(`Failed to load ${endpoint}:`, e);

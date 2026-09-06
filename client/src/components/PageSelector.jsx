@@ -26,9 +26,14 @@ export default function PageSelector({ currentPage, onPageChange }) {
     }
   }, [isOpen]);
 
+  const externalLinks = {
+    cv: "https://mpcqwezar.github.io/pmolchanov-website/",
+    ushanka: "https://mpcqwezar.github.io/ushanka/",
+  };
+
   const handleSelect = (pageId) => {
-    if (pageId === "cv") {
-      window.open("https://mpcqwezar.github.io/pmolchanov-website/", "_blank", "noopener");
+    if (externalLinks[pageId]) {
+      window.open(externalLinks[pageId], "_blank", "noopener");
     } else {
       onPageChange?.(pageId);
     }
@@ -66,6 +71,13 @@ export default function PageSelector({ currentPage, onPageChange }) {
             title="Open CV"
           >
             📄 CV
+          </button>
+          <button
+            className="page-selector-item"
+            onClick={() => handleSelect("ushanka")}
+            title="Open Ushanka"
+          >
+            🧢 Ushanka
           </button>
         </div>
       )}
