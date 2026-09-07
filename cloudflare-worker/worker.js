@@ -148,15 +148,21 @@ async function safeFetchFeed(feed) {
 
 function parseRssItems(xml) {
   const items = [];
-  const itemRe = /<item\b[^>]*>([\s\S]*?)<\/item>/gi;
+  const containerRe = /<(item|entry)\b[^>]*>([\s\S]*?)<\/\1>/gi;
   let match;
-  while ((match = itemRe.exec(xml))) {
-    const block = match[1];
+  while ((match = containerRe.exec(xml))) {
+    const block = match[2];
     const title = textTag(block, "title");
     const link = textTag(block, "link") || attrTag(block, "link", "href");
-    const pubDate = textTag(block, "pubDate") || textTag(block, "dc:date");
+    const pubDate =
+      textTag(block, "pubDate") ||
+      textTag(block, "published") ||
+      textTag(block, "updated") ||
+      textTag(block, "dc:date");
     const description =
       textTag(block, "content:encoded") ||
+      textTag(block, "content") ||
+      textTag(block, "summary") ||
       textTag(block, "description") ||
       "";
     const image =
