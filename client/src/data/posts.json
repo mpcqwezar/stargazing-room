@@ -1,10 +1,39 @@
 [
 {
+    "id": "eclipse-2026",
+    "title": "Solar eclipse 2026",
+    "date": "12 Aug 2026",
+    "blocks": [
+      { "type": "paragraph", "text": "Солнечное затмение 2026 успешно просмотрено из Англии." },
+      { "type": "image", "src": "/stargazing-room/blog-images/eclipse.jpg", "alt": "Eclipse photo" },
+      { "type": "paragraph", "text": "Повезло с погодой и видом из окна, поэтому получилось пофоткать даже не выходя из дома." },
+      { "type": "paragraph", "text": "Ссылка на пост в инсте - https://www.instagram.com/p/Db-lYAtDAsZiNOZeBXpeY5mbGx_M1M638rjdoY0/?stkn=MXZxaG41eGN2c3RmZQ==" }
+    ]
+  },
+  {
     "id": "hello-world-2026-02-13",
     "title": "Ну-с, поехали!",
-    "date": "05 Sep 2026",
+    "date": "05 Aug 2026",
     "blocks": [
       { "type": "paragraph", "text": "Буду сюда запихивать всякие заметки, если что-то вдруг всплывёт. А пока загрузил сюда свои обзорчики." }
+    ]
+  },
+  {
+    "id": "odyssey-2026-2026-07-19",
+    "title": "The Odyssey 2024",
+    "date": "19 Jul 2026",
+    "blocks": [
+      { "type": "paragraph", "text": "First off, let me say outright that, in my opinion, this is one of the best adaptations of The Odyssey (though my favorite remains \"O Brother, Where Art Thou?\" from 2000), despite the film's flaws -including those typical of Nolan." },
+      { "type": "image", "src": "https://a.ltrbxd.com/resized/film-poster/1/2/5/5/3/9/4/1255394-the-odyssey-2026-0-1000-0-1500-crop.jpg?v=1eed046d0c", "alt": "Odyssey poster" },
+      { "type": "paragraph", "text": "I always felt that, considering how many Odyssey adaptations already exist, there was no point in adapting it literally again. Fortunately, Nolan managed to inject his own idea with minimal plot changes (or at least shifted the focus toward one of the book's core themes), which keeps the film feeling fresh." },
+      { "type": "paragraph", "text": "Next will be a bit spoilers." },
+      { "type": "paragraph", "text": "He somehow managed to adapt nearly all the episodes onto screen - a feat few have accomplished in such a runtime. Of course, he changed a lot, but for his particular vision, these were justified alterations." },
+      { "type": "paragraph", "text": "As for the negatives, I think it's worth mentioning that Nolan repeats the same mistake he made in Oppenheimer, where he simply showed the protagonist staring in horror at a screen displaying footage of the atrocities his invention had caused - without showing the audience any of it. In other words, it's such a pathetic, worthless, and safe attempt to convey that \"war is bad\", while simultaneously trying not to actually frighten anyone. It even looks like he tries not to bump up the age rating, even though it is already R. That was honestly embarrassing to watch." },
+      { "type": "paragraph", "text": "Here he does essentially the same thing, failing to show even the bare minimum of the horror that should have been taking place. Though in truth, there were easy ways to make certain things crystal clear to the audience even without gore or really scary stuff. But Nolan is apparently afraid to try." },
+      { "type": "paragraph", "text": "The classic Nolan problems aren't really worth dissecting in detail - he hasn't improved anything in himself: women are still almost undeveloped characters, the pacing remains too fast, and the soundtrack (great in itself) still fails to register when a scene has changed." },
+      { "type": "paragraph", "text": "On the lighter side - sorry, but when actors who couldn't look less Greek proudly stare into the camera saying \"we are Greeks!\" in an ancient setting, it can only provoke awkward laughter. It's rather hypocritical and dumb. But it’s not that big of a deal - only couple of scenes, just funny." },
+      { "type": "paragraph", "text": "Also worth noting: while in almost all Odyssey adaptations Odysseus is portrayed as a sweetheart, desperately missing Penelope, etc., in the original he actually slept with pretty much every woman on his way. People seem too awkward to bring that up. Though yes, I agree that in this film it would have been completely out of place and would have broken the central idea, so I'm not complaining." },
+      { "type": "paragraph", "text": "But in any case, these grievances of mine don't outweigh the film's merits - it's still a great adaptation. With its own reinterpretations, but very good ones nonetheless. I just wanted to grumble a bit." }
     ]
   },
   {
