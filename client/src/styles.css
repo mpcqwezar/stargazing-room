@@ -160,6 +160,18 @@ body {
   display: flex;
   align-items: center;
   gap: 8px;
+  position: relative;
+}
+
+.header-copyright {
+  position: absolute;
+  right: 0;
+  bottom: calc(100% + 5px);
+  color: #f2f4f8;
+  font-size: 10px;
+  line-height: 1;
+  white-space: nowrap;
+  pointer-events: none;
 }
 
 /* push header actions to the right side */

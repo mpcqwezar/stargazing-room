@@ -20,6 +20,7 @@ export default function Header({ onRefresh, isRefreshing, onMediaRefresh, isMedi
         </picture>
       </h1>
       <div className="header-actions">
+        <span className="header-copyright">© 2025–2026 Pavel Molchanov. All rights reserved.</span>
         {isNews && (
           <>
             <button className={`refresh-button icon-btn${isRefreshing ? " loading" : ""}`} onClick={onRefresh} disabled={isRefreshing} aria-label="Refresh" aria-busy={isRefreshing}>
