@@ -167,8 +167,8 @@ window.ALBUMS = [
     year: 2019,
     url: "https://www.flickr.com/photos/pmolchanov/albums/72177720320186572",
     image: "https://live.staticflickr.com/65535/53981513472_7c06c644d5_h.jpg",
-    lat: 34.768190731659374,
-    lng: 135.8785549988693
+    lat: 34.70081552563228,
+    lng: 135.49428441232686
   },
   {
     title: "Kyoto",
@@ -177,8 +177,8 @@ window.ALBUMS = [
     year: 2019,
     url: "https://www.flickr.com/photos/pmolchanov/albums/72177720320182510",
     image: "https://live.staticflickr.com/65535/53981506012_480a1d6dbd_h.jpg",
-    lat: 35.00914161584037,
-    lng: 135.5534733664796
+    lat: 35.01361708233707,
+    lng: 135.77363499338165
   },
   {
     title: "Nara",
@@ -247,8 +247,8 @@ window.ALBUMS = [
     year: 2022,
     url: "https://www.flickr.com/photos/pmolchanov/albums/72177720320330360",
     image: "https://live.staticflickr.com/65535/53996139856_faa325a964_h.jpg",
-    lat: 41.42000396025895,
-    lng: 31.244538861230428
+    lat: 41.00037817630327,
+    lng: 29.077762114835707
   },
   {
     title: "Antalya",
@@ -257,8 +257,8 @@ window.ALBUMS = [
     year: "2022-2023",
     url: "https://www.flickr.com/photos/pmolchanov/albums/72177720320181456",
     image: "https://live.staticflickr.com/65535/53996412004_f61c084a6d_h.jpg",
-    lat: 37.05868802988092,
-    lng: 31.37674268255114
+    lat: 36.89178599555412,
+    lng: 30.736777901202792
   },
   {
     title: "Guangzhou",
@@ -399,5 +399,55 @@ window.ALBUMS = [
     image: "https://live.staticflickr.com/65535/55570468533_ff04718cf3_b.jpg",
     lat: 60.18850878389938,
     lng: 25.16935980090755
+  },
+  {
+    title: "Sochi",
+    country: "Russia",
+    city: "Sochi",
+    year: 2004,
+    url: "https://www.flickr.com/photos/pmolchanov/albums/72177720335981206",
+    image: "https://live.staticflickr.com/65535/55571043220_d8c20ec14c_h.jpg",
+    lat: 43.4462862293963,
+    lng: 39.94573575693568
+  },
+  {
+    title: "Kemer",
+    country: "Turkey",
+    city: "Kemer",
+    year: 2006,
+    url: "https://www.flickr.com/photos/pmolchanov/albums/72177720335975887",
+    image: "https://live.staticflickr.com/65535/55569620822_d61af1d832_b.jpg",
+    lat: 36.53442346099448,
+    lng: 30.530122628732478
+  },
+  {
+    title: "Aladaglar",
+    country: "Turkey",
+    city: "Aladaglar",
+    year: 2006,
+    url: "https://www.flickr.com/photos/pmolchanov/albums/72177720335975995",
+    image: "https://live.staticflickr.com/65535/55569614842_096c724195_h.jpg",
+    lat: 37.87607344425777,
+    lng: 35.14571087837248
+  },
+  {
+    title: "Sharm El Sheikh",
+    country: "Egypt",
+    city: "Sharm El Sheikh",
+    year: 2010,
+    url: "https://www.flickr.com/photos/pmolchanov/albums/72177720335975825",
+    image: "https://live.staticflickr.com/65535/55570734008_cbcd528239_h.jpg",
+    lat: 27.967971572028926,
+    lng: 34.35794712102144
+  },
+  {
+    title: "Beldibi",
+    country: "Turkey",
+    city: "Beldibi",
+    year: 2014,
+    url: "https://www.flickr.com/photos/pmolchanov/albums/72177720335975692",
+    image: "https://live.staticflickr.com/65535/55571048215_e1162e08d4_h.jpg",
+    lat: 36.73456636729261,
+    lng: 30.563277721456792
   }
 ];
