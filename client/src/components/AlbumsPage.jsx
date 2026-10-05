@@ -9,6 +9,10 @@ function formatLocation(album) {
     : [album.city, album.country].filter(Boolean).join(", ");
 }
 
+function latestYear(year) {
+  return Number(String(year ?? "").match(/\d{4}/g)?.at(-1) ?? -Infinity);
+}
+
 function loadFlickrEmbeds() {
   if (document.querySelector(`script[src="${FLICKR_SCRIPT_SRC}"]`)) return;
   const script = document.createElement("script");
@@ -49,7 +53,6 @@ function FlickrEmbed({ album }) {
 
 function sortAlbums(albums) {
   return [...albums].sort((first, second) => {
-    const latestYear = year => Number(String(year ?? "").match(/\d{4}/g)?.at(-1) ?? -Infinity);
     const yearDifference = latestYear(second.year) - latestYear(first.year);
     return yearDifference || first.title.localeCompare(second.title);
   });
@@ -76,7 +79,11 @@ export default function AlbumsPage() {
       grouped.get(album.country).push(album);
     }
     return [...grouped.entries()]
-      .sort(([first], [second]) => first.localeCompare(second))
+      .sort(([firstCountry, firstAlbums], [secondCountry, secondAlbums]) => {
+        const firstLatestYear = Math.max(...firstAlbums.map(album => latestYear(album.year)));
+        const secondLatestYear = Math.max(...secondAlbums.map(album => latestYear(album.year)));
+        return secondLatestYear - firstLatestYear || firstCountry.localeCompare(secondCountry);
+      })
       .map(([name, albums]) => [name, sortAlbums(albums)]);
   }, [country, search]);
 
