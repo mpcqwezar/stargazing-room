@@ -437,7 +437,7 @@ window.ALBUMS = [
     year: 2010,
     url: "https://www.flickr.com/photos/pmolchanov/albums/72177720335975825",
     image: "https://live.staticflickr.com/65535/55570734008_cbcd528239_h.jpg",
-    lat: 27.967971572028926,
+    lat: 27.967971572028925,
     lng: 34.35794712102144
   },
   {
