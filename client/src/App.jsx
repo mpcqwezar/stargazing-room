@@ -1,3 +1,4 @@
+import "./albums-data.js";
 import { useEffect, useState } from "react";
 import NewsList from "./components/NewsList.jsx";
 import Header from "./components/Header.jsx";
@@ -6,6 +7,8 @@ import ScrollToTop from "./components/ScrollToTop.jsx";
 import RetroMedia from "./components/RetroMedia.jsx";
 import MediaPage from "./components/MediaPage.jsx";
 import Blog from "./components/Blog.jsx";
+import AlbumsPage from "./components/AlbumsPage.jsx";
+import AlbumMapPage from "./components/AlbumMapPage.jsx";
 import { useTheme } from "./context/ThemeContext.jsx";
 import { LIVE_API_BASE } from "./config.js";
 
@@ -122,6 +125,8 @@ export default function App() {
       )}
       {currentPage === "media" && <MediaPage mediaData={media} mediaUpdatedAt={media.updatedAt} onPageChange={setCurrentPage} />}
       {currentPage === "blog" && <Blog />}
+      {currentPage === "albums" && <AlbumsPage />}
+      {currentPage === "map" && <AlbumMapPage />}
     </>
   );
 }

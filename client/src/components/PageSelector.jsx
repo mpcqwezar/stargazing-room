@@ -8,9 +8,9 @@ export default function PageSelector({ currentPage, onPageChange }) {
     { id: "news", label: "� RSS feed", title: "RSS feed" },
     { id: "media", label: "📚 My lists", title: "My lists" },
     { id: "blog", label: "✍️ Blog", title: "Blog" },
+    { id: "albums", label: "📷 Photos", title: "Photos" },
+    { id: "map", label: "🗺️ Map", title: "Map" },
   ];
-
-  const currentPageLabel = pages.find(p => p.id === currentPage)?.label || "Pages";
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -58,6 +58,7 @@ export default function PageSelector({ currentPage, onPageChange }) {
             <button
               key={page.id}
               className={`page-selector-item ${currentPage === page.id ? "active" : ""}`}
+              aria-current={currentPage === page.id ? "page" : undefined}
               onClick={() => handleSelect(page.id)}
               title={page.title}
             >

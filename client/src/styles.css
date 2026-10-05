@@ -472,7 +472,28 @@ a:hover {
 }
 
 [data-theme="light"] .page-selector-item {
-  color: #dbe7ff;
+  color: #172337;
+}
+
+[data-theme="light"] .page-selector-menu {
+  background: #f5f7fa;
+  border-color: rgba(26, 43, 61, 0.2);
+  box-shadow: 0 4px 12px rgba(15, 32, 48, 0.2);
+}
+
+[data-theme="light"] .page-selector-item:hover {
+  color: #12385c;
+  background: #e4ebf2;
+}
+
+[data-theme="light"] .page-selector-item.active {
+  color: #12385c;
+  background: #dce6ef;
+  border-left-color: #315f88;
+}
+
+[data-theme="light"] .page-selector-divider {
+  background: rgba(26, 43, 61, 0.2);
 }
 
 
