@@ -565,6 +565,13 @@ a:hover {
 }
 
 /* Blog styles */
+.blog-page {
+  max-width: 1000px;
+  margin: 0 auto 40px;
+  padding: 0 40px;
+  box-sizing: border-box;
+}
+
 .blog-list {
   display: flex;
   flex-direction: column;
@@ -657,6 +664,10 @@ a:hover {
 }
 
 @media (max-width: 768px) {
+  .blog-page {
+    padding: 0 20px;
+  }
+
   .post-header {
     flex-direction: column;
     align-items: flex-start;
