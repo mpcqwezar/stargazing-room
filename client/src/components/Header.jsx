@@ -3,10 +3,9 @@ import PageSelector from "./PageSelector.jsx";
 import { useTheme } from "../context/ThemeContext.jsx";
 
 // The button shows where the next click leads, not the current theme.
-const THEME_ICONS = { dark: "🌙", light: "☀️", retro: "👾" };
+const THEME_ICONS = { dark: "🌙", light: "☀️" };
 
-export default function Header({ onRefresh, isRefreshing, onMediaRefresh, isMediaRefreshing, showSources, onShowSourcesChange, currentPage, onPageChange }) {
-  const isNews = currentPage === "news";
+export default function Header({ onMediaRefresh, isMediaRefreshing, currentPage, onPageChange }) {
   const isMedia = currentPage === "media";
   const assets = import.meta.env.BASE_URL;
   const { nextTheme, toggleTheme } = useTheme();
@@ -21,20 +20,6 @@ export default function Header({ onRefresh, isRefreshing, onMediaRefresh, isMedi
       </h1>
       <div className="header-actions">
         <span className="header-copyright">© 2025–2026 Pavel Molchanov. All rights reserved.</span>
-        {isNews && (
-          <>
-            <button className={`refresh-button icon-btn${isRefreshing ? " loading" : ""}`} onClick={onRefresh} disabled={isRefreshing} aria-label="Refresh" aria-busy={isRefreshing}>
-              {isRefreshing ? <span className="spinner" aria-hidden="true" /> : '⟳'}
-            </button>
-            <button
-              className={`preferences-btn${showSources ? " active" : ""}`}
-              onClick={() => onShowSourcesChange?.(!showSources)}
-              aria-expanded={showSources}
-            >
-              ⚙️
-            </button>
-          </>
-        )}
         {isMedia && (
           <button className={`refresh-button icon-btn${isMediaRefreshing ? " loading" : ""}`} onClick={onMediaRefresh} disabled={isMediaRefreshing} aria-label="Refresh" aria-busy={isMediaRefreshing}>
             {isMediaRefreshing ? <span className="spinner" aria-hidden="true" /> : '⟳'}

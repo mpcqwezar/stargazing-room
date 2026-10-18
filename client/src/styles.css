@@ -60,28 +60,6 @@ body {
   --star-color: #333;
 }
 
-/* Retro 90s mode */
-[data-theme="retro"] {
-  color-scheme: dark;
-  --bg-primary: #0a0a1a;
-  --bg-secondary: #1a1a3a;
-  --header-bg: #000033;
-  --text-primary: #00ff00;
-  --text-secondary: #00dd00;
-  --text-tertiary: #00cc00;
-  --button-bg: #000055;
-  --button-bg-hover: #000088;
-  --button-bg-active: #000066;
-  --button-border: #00ff00;
-  --button-border-hover: #00ffff;
-  --button-glow: #00ff00;
-  --text-accent: #00ffff;
-  --link-color: #00ffff;
-  --border-color: #00ff00;
-  --meta-color: #00dd00;
-  --star-color: #ffff00;
-}
-
 body {
   color: var(--text-primary);
   background: var(--bg-primary);
@@ -179,76 +157,6 @@ body {
   margin-left: auto;
 }
 
-.preferences-bar {
-  position: fixed;
-  top: var(--header-height);
-  left: 0;
-  right: 0;
-  background: var(--header-bg);
-  border-bottom: 1px solid var(--border-color);
-  padding: 12px 40px;
-  z-index: 900;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 12px;
-}
-
-.preferences-bar .controls {
-  flex: 0 1 auto;
-}
-
-.preferences-bar .preferences-toggles {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-left: auto;
-}
-
-/* Source checkboxes take the row below the preset buttons */
-.preferences-bar .source-bar {
-  flex: 1 0 100%;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 8px 16px;
-}
-
-/* кнопка Preferences */
-.preferences-btn {
-  background: var(--button-bg);
-  border: 1px solid var(--button-border);
-  color: var(--text-primary);
-  height: 40px;
-  padding: 0 14px;
-  white-space: nowrap;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-.preferences-btn:hover {
-  background: var(--button-bg-hover);
-  border-color: var(--button-border-hover);
-  box-shadow: 0 0 8px var(--button-glow);
-}
-
-.retro-mute-btn {
-  background: transparent;
-  border: 1px solid rgba(255,255,255,0.08);
-  color: var(--text-primary);
-  padding: 6px 8px;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-[data-theme="light"] .retro-mute-btn {
-  border-color: rgba(0,0,0,0.08);
-  color: var(--text-primary);
-}
-[data-theme="light"] .preferences-bar label {
-  color: #ffffff;
-}
-
 .theme-toggle {
   padding: 8px 12px;
   border-radius: 6px;
@@ -297,89 +205,6 @@ body {
   background: var(--button-bg-active);
 }
 
-.app {
-  max-width: 1200px;
-  margin: 0 auto 40px auto;
-  padding: 0 40px;
-}
-
-.app.sources-open {
-  margin-top: var(--preferences-height, 0px);
-}
-
-.controls {
-  background: transparent;
-  padding: 0;
-  border-radius: 0;
-  margin-bottom: 0;
-  display: flex;
-  flex-direction: row;
-  gap: 12px;
-  align-items: center;
-  flex: 1;
-}
-
-.controls-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  align-items: center;
-}
-
-.controls-sources {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.controls button {
-  padding: 8px 16px;
-  font-size: 14px;
-}
-
-.controls button:hover {
-}
-
-.controls button:active {
-  background: var(--button-bg-active);
-}
-
-.controls label {
-  margin-right: 16px;
-}
-
-.meta {
-  font-size: 13px;
-  color: var(--meta-color);
-  margin-bottom: 12px;
-}
-
-.news-item {
-  background: var(--bg-secondary);
-  display: flex;
-  gap: 16px;
-  padding: 14px;
-  border-radius: 8px;
-}
-
-.news-item + .news-item {
-  border-top: 1px solid var(--border-color);
-}
-
-.source {
-  min-width: 80px;
-  color: var(--text-accent);
-  text-transform: uppercase;
-  font-size: 12px;
-}
-
-.preview {
-  width: 140px;
-  height: 90px;
-  object-fit: cover;
-  border-radius: 6px;
-}
-
 a {
   color: var(--link-color);
   text-decoration: none;
@@ -390,11 +215,6 @@ a:hover {
   text-decoration: underline;
 }
 
-.date {
-  font-size: 13px;
-  color: var(--text-tertiary);
-}
-
 .star {
   position: fixed;
   width: 5px;
@@ -403,14 +223,6 @@ a:hover {
   opacity: 0.8;
   pointer-events: none;
   animation: star-fall linear forwards;
-}
-
-.star[data-retro="true"] {
-  width: 6px;
-  height: 6px;
-  background: radial-gradient(circle, #ffff00 0%, #ffaa00 100%);
-  box-shadow: 0 0 10px #ffff00, 0 0 20px rgba(255, 255, 0, 0.5);
-  border-radius: 50%;
 }
 
 @keyframes star-fall {
@@ -424,51 +236,9 @@ a:hover {
   }
 }
 
-.scroll-to-top {
-  position: fixed;
-  bottom: 20px;
-  left: 20px;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 24px;
-  z-index: 999;
-  opacity: 0;
-  pointer-events: none;
-}
-
-.scroll-to-top.visible {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-.scroll-to-top:hover {
-}
-
 /* Light mode overrides */
-[data-theme="light"] .source {
-  color: #001a4d;
-}
-
 [data-theme="light"] a {
   color: #001a4d;
-}
-
-[data-theme="light"] .controls button:hover {
-  background: rgba(50, 70, 100, 0.9);
-  border-color: rgba(143, 183, 255, 0.6);
-  box-shadow: 0 0 8px rgba(143, 183, 255, 0.2);
-}
-
-[data-theme="light"] .controls button:active {
-  background: rgba(40, 55, 85, 0.95);
-}
-
-[data-theme="light"] .controls label {
-  color: #e6e6e6;
 }
 
 [data-theme="light"] .page-selector-item {
@@ -497,194 +267,6 @@ a:hover {
 }
 
 
-/* Retro 90s theme styles */
-[data-theme="retro"] {
-  font-family: 'Courier New', monospace;
-}
-
-[data-theme="retro"] body {
-  background: #0a0a1a url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><rect fill="%230a0a1a" width="100" height="100"/><circle cx="50" cy="50" r="1" fill="%23003300" opacity="0.5"/></svg>');
-}
-
-[data-theme="retro"] .header {
-  border: 3px solid #00ff00;
-  border-bottom: 5px solid #00ff00;
-  box-shadow: 0 0 20px #00ff00, inset 0 0 20px rgba(0, 255, 0, 0.1);
-}
-
-/* On the title, not the image, so the glow is not cut off by the crop */
-[data-theme="retro"] .header-title {
-  filter: drop-shadow(0 0 6px #00ff00);
-}
-
-[data-theme="retro"] .controls button {
-  background: #000055;
-  border: 2px solid #00ff00;
-  color: #00ff00;
-  box-shadow: 0 0 10px #00ff00, inset 0 0 10px rgba(0, 255, 0, 0.2);
-  text-shadow: 0 0 5px #00ff00;
-}
-
-[data-theme="retro"] .controls button:hover {
-  background: #000088;
-  border-color: #00ffff;
-  box-shadow: 0 0 20px #00ffff, inset 0 0 10px rgba(0, 255, 255, 0.2);
-  color: #00ffff;
-  text-shadow: 0 0 10px #00ffff;
-}
-
-[data-theme="retro"] .controls label {
-  color: #00ff00;
-  text-shadow: 0 0 5px #00ff00;
-  font-weight: bold;
-}
-
-[data-theme="retro"] .theme-toggle {
-  background: #000055;
-  border: 2px solid #00ff00;
-  color: #00ff00;
-  box-shadow: 0 0 10px #00ff00;
-}
-
-[data-theme="retro"] .theme-toggle:hover {
-  background: #000088;
-  border-color: #00ffff;
-  box-shadow: 0 0 20px #00ffff;
-  color: #00ffff;
-}
-
-[data-theme="retro"] .news-item {
-  border: 2px solid #00ff00;
-  background: #0a0a2a;
-  box-shadow: 0 0 15px rgba(0, 255, 0, 0.3);
-}
-
-[data-theme="retro"] .news-item + .news-item {
-  border-top: 2px solid #00ff00;
-}
-
-[data-theme="retro"] .source {
-  color: #00ffff;
-  text-shadow: 0 0 5px #00ffff;
-  font-weight: bold;
-}
-
-[data-theme="retro"] a {
-  color: #00ffff;
-  text-shadow: 0 0 5px #00ffff;
-}
-
-[data-theme="retro"] a:hover {
-  text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff;
-}
-
-[data-theme="retro"] .meta {
-  color: #00ff00;
-  text-shadow: 0 0 5px #00ff00;
-  border: 1px dashed #00ff00;
-  padding: 8px;
-}
-
-[data-theme="retro"] .date {
-  color: #00dd00;
-  text-shadow: 0 0 3px #00dd00;
-}
-
-[data-theme="retro"] .scroll-to-top {
-  background: #000055;
-  border: 2px solid #00ff00;
-  color: #00ff00;
-  box-shadow: 0 0 10px #00ff00;
-}
-
-[data-theme="retro"] .scroll-to-top:hover {
-  background: #000088;
-  border-color: #00ffff;
-  box-shadow: 0 0 20px #00ffff;
-  color: #00ffff;
-}
-
-/* Retro expanding border wave using ::after - simpler and CSS-only */
-[data-theme="retro"] .news-item {
-  position: relative;
-  overflow: visible;
-}
-
-[data-theme="retro"] .news-item::after {
-  content: "";
-  position: absolute;
-  left: -6px;
-  top: -6px;
-  width: calc(100% + 12px);
-  height: calc(100% + 12px);
-  border-radius: inherit;
-  border: 3px solid #ffaa00;
-  box-shadow: 0 0 20px #ff6600, inset 0 0 20px rgba(255, 102, 0, 0.5);
-  transform: scale(1);
-  opacity: 0;
-  pointer-events: none;
-}
-
-[data-theme="retro"] .news-item:hover::after {
-  animation: retro-wave 1s ease-out forwards;
-  opacity: 1;
-}
-
-@keyframes retro-wave {
-  0% { transform: scale(1); opacity: 1; }
-  100% { transform: scale(2); opacity: 0; }
-}
-
-/* Retro media (GIF left of news + music player) */
-[data-theme="retro"] .retro-media {
-  position: fixed;
-  left: 20px;
-  top: 140px; /* below header */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-  z-index: 800;
-}
-
-[data-theme="retro"] .retro-media .retro-gif {
-  width: 160px;
-  height: auto;
-  border: 2px solid #00ff00;
-  box-shadow: 0 0 12px #00ff00;
-}
-
-/* Reserve a gutter for the fixed GIF so it never sits on top of the news */
-@media (min-width: 900px) {
-  [data-theme="retro"] .app {
-    padding-left: 220px;
-  }
-}
-
-@media (max-width: 899px) {
-  [data-theme="retro"] .retro-media {
-    display: none;
-  }
-}
-
-[data-theme="retro"] .retro-music-toggle {
-  background: #000055;
-  border: 2px solid #00ff00;
-  color: #00ff00;
-  padding: 6px 10px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 16px;
-}
-
-[data-theme="retro"] .retro-music-toggle.muted {
-  opacity: 0.7;
-}
-
-[data-theme="retro"] .retro-music-toggle.playing {
-  box-shadow: 0 0 8px #00ff00;
-}
-
 /* Mobile responsiveness */
 @media (max-width: 768px) {
   :root {
@@ -701,40 +283,6 @@ a:hover {
     flex-wrap: wrap;
   }
 
-  .preferences-bar {
-    padding: 10px 16px;
-  }
-
-  /* Presets share the row with the theme toggle, stretched to fit */
-  .preferences-bar .controls {
-    flex: 1 1 auto;
-  }
-
-  .preferences-bar .controls-buttons {
-    width: 100%;
-  }
-
-  .preferences-bar .controls button {
-    flex: 1;
-    padding: 8px 4px;
-  }
-
-  .app {
-    padding: 0 20px;
-  }
-
-  .news-item {
-    padding: 10px;
-    gap: 12px;
-  }
-
-  .news-item h3 {
-    font-size: 16px;
-  }
-
-  .news-item p {
-    font-size: 14px;
-  }
 }
 
 /* Media Page Styles */
@@ -924,69 +472,6 @@ a:hover {
   text-align: center;
   padding: 40px 20px;
   font-style: italic;
-}
-
-/* Retro theme for media page */
-[data-theme="retro"] .media-item {
-  border: 2px solid #00ff00;
-  background: #0a0a2a;
-  box-shadow: 0 0 15px rgba(0, 255, 0, 0.3);
-}
-
-[data-theme="retro"] .media-item:hover {
-  background: #0a0a4a;
-  border-color: #00ffff;
-  box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
-}
-
-[data-theme="retro"] .flickr-embed-container {
-  border: 2px solid #00ff00;
-  background: #0a0a2a;
-  box-shadow: 0 0 15px rgba(0, 255, 0, 0.3);
-}
-
-[data-theme="retro"] .column-title {
-  color: #00ff00;
-  text-shadow: 0 0 5px #00ff00;
-  border-bottom-color: #00ff00;
-}
-
-[data-theme="retro"] .media-source {
-  color: #00ffff;
-  text-shadow: 0 0 5px #00ffff;
-}
-
-[data-theme="retro"] .media-text a {
-  color: #00ffff;
-  text-shadow: 0 0 5px #00ffff;
-}
-
-[data-theme="retro"] .media-text a:hover {
-  text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff;
-}
-
-[data-theme="retro"] .media-description {
-  color: #00dd00;
-}
-
-[data-theme="retro"] .media-date {
-  color: #00aa00;
-  text-shadow: 0 0 3px #00aa00;
-}
-
-[data-theme="retro"] .media-meta-info {
-  color: #00aa00;
-  text-shadow: 0 0 3px #00aa00;
-}
-
-[data-theme="retro"] .media-header {
-  border: 1px dashed #00ff00;
-  padding: 12px;
-}
-
-[data-theme="retro"] .media-meta {
-  color: #00ff00;
-  text-shadow: 0 0 5px #00ff00;
 }
 
 /* Media page mobile responsiveness */
@@ -1252,58 +737,17 @@ a:hover {
   padding-left: 11px;
 }
 
-[data-theme="retro"] .page-selector-btn {
-  background: #000055;
-  border: 2px solid #00ff00;
-  color: #00ff00;
-  box-shadow: 0 0 10px #00ff00;
-}
-
-[data-theme="retro"] .page-selector-btn:hover {
-  background: #000088;
-  border-color: #00ffff;
-  box-shadow: 0 0 20px #00ffff;
-  color: #00ffff;
-}
-
-[data-theme="retro"] .page-selector-menu {
-  background: #000033;
-  border: 2px solid #00ff00;
-  box-shadow: 0 0 15px rgba(0, 255, 0, 0.3);
-}
-
-[data-theme="retro"] .page-selector-item {
-  color: #00ff00;
-}
-
-[data-theme="retro"] .page-selector-item:hover {
-  background: #000055;
-  color: #00ffff;
-}
-
-[data-theme="retro"] .page-selector-item.active {
-  background: #000044;
-  border-left-color: #00ffff;
-  color: #00ffff;
-}
-
 .page-selector-divider {
   height: 1px;
   background: var(--button-border);
   margin: 4px 0;
 }
 
-[data-theme="retro"] .page-selector-divider {
-  background: #00ff00;
-}
-
 /* Shared button base styles */
 .refresh-button,
-.controls button,
 .page-switch-btn,
 .page-mode-toggle,
 .cv-button,
-.scroll-to-top,
 .page-selector-btn {
   background: var(--button-bg);
   border: 1px solid var(--button-border);
@@ -1314,11 +758,9 @@ a:hover {
 }
 
 .refresh-button:hover,
-.controls button:hover,
 .page-switch-btn:hover,
 .page-mode-toggle:hover,
 .cv-button:hover,
-.scroll-to-top:hover,
 .page-selector-btn:hover {
   background: var(--button-bg-hover);
   border-color: var(--button-border-hover);
@@ -1326,10 +768,8 @@ a:hover {
 }
 
 /* Ensure header + controls buttons use light palette in light mode */
-[data-theme="light"] .controls button,
 [data-theme="light"] .header .refresh-button,
 [data-theme="light"] .header .page-selector-btn,
-[data-theme="light"] .header .preferences-btn,
 [data-theme="light"] .header .theme-toggle {
   background: rgba(30, 40, 60, 0.8);
   border: 1px solid rgba(143, 183, 255, 0.3);

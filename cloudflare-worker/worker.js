@@ -3,21 +3,11 @@
  * Then Deploy. No CLI / no install on your computer.
  *
  * Endpoints:
- *   GET /api/news
  *   GET /api/media
  */
 
 const DAY = 24 * 60 * 60 * 1000;
 const TEN_YEARS = 10 * 365 * DAY;
-
-const NEWS_FEEDS = [
-  { source: "Shazoo", url: "https://shazoo.ru/feed/rss" },
-  { source: "DTF", url: "https://dtf.ru/rss/" },
-  { source: "StopGame", url: "https://rss.stopgame.ru/rss_news.xml" },
-  { source: "Wowhead", url: "https://www.wowhead.com/news/rss/retail" },
-  { source: "Standard", url: "https://www.standard.co.uk/rss" },
-  { source: "Meduza", url: "https://meduza.io/rss/all" },
-];
 
 const MEDIA_FEEDS = [
   {
@@ -57,15 +47,11 @@ export default {
 
     const url = new URL(request.url);
     try {
-      if (url.pathname === "/api/news") {
-        const news = await collectNews();
-        return json({ updatedAt: new Date().toISOString(), news }, cors);
-      }
       if (url.pathname === "/api/media") {
         const media = await collectMedia();
         return json({ updatedAt: new Date().toISOString(), ...media }, cors);
       }
-      return json({ ok: true, endpoints: ["/api/news", "/api/media"] }, cors);
+      return json({ ok: true, endpoints: ["/api/media"] }, cors);
     } catch (error) {
       return json({ error: String(error.message || error) }, cors, 500);
     }
@@ -91,15 +77,6 @@ function json(body, cors, status = 200) {
       "Cache-Control": "no-store",
     },
   });
-}
-
-async function collectNews() {
-  const batches = await Promise.all(
-    NEWS_FEEDS.map((feed) =>
-      safeFetchFeed(feed).catch(() => [])
-    )
-  );
-  return batches.flat().sort((a, b) => b.publishedAt - a.publishedAt);
 }
 
 async function collectMedia() {

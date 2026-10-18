@@ -16,16 +16,6 @@
   --album-map-water: #aad3df;
 }
 
-[data-theme="retro"] {
-  --album-accent: #00cc66;
-  --album-accent-contrast: #001a0d;
-  --album-surface: #002611;
-  --album-border: #00aa55;
-  --album-muted: #a1ffc2;
-  --album-focus: #ffff00;
-  --album-map-water: #21343a;
-}
-
 .albums-page {
   min-height: calc(100vh - var(--header-height) - 28px);
   padding: 20px 28px 52px;
@@ -295,21 +285,17 @@
   margin-top: 6px;
 }
 
-[data-theme="dark"] .leaflet-tile-pane,
-[data-theme="retro"] .leaflet-tile-pane {
+[data-theme="dark"] .leaflet-tile-pane {
   filter: invert(0.88) hue-rotate(180deg) brightness(0.68) saturate(0.7);
 }
 
 [data-theme="dark"] .leaflet-popup-content-wrapper,
-[data-theme="dark"] .leaflet-popup-tip,
-[data-theme="retro"] .leaflet-popup-content-wrapper,
-[data-theme="retro"] .leaflet-popup-tip {
+[data-theme="dark"] .leaflet-popup-tip {
   color: var(--text-primary);
   background: var(--album-surface);
 }
 
-[data-theme="dark"] .leaflet-popup-content-wrapper,
-[data-theme="retro"] .leaflet-popup-content-wrapper {
+[data-theme="dark"] .leaflet-popup-content-wrapper {
   border: 1px solid var(--album-border);
   box-shadow: 0 3px 16px rgba(0, 0, 0, 0.5);
 }
@@ -317,36 +303,27 @@
 [data-theme="dark"] .leaflet-popup-close-button,
 [data-theme="dark"] .leaflet-popup-content a,
 [data-theme="dark"] .leaflet-control-attribution,
-[data-theme="dark"] .leaflet-control-attribution a,
-[data-theme="retro"] .leaflet-popup-close-button,
-[data-theme="retro"] .leaflet-popup-content a,
-[data-theme="retro"] .leaflet-control-attribution,
-[data-theme="retro"] .leaflet-control-attribution a {
+[data-theme="dark"] .leaflet-control-attribution a {
   color: var(--text-primary);
 }
 
 [data-theme="dark"] .leaflet-control-zoom a,
-[data-theme="dark"] .leaflet-control-attribution,
-[data-theme="retro"] .leaflet-control-zoom a,
-[data-theme="retro"] .leaflet-control-attribution {
+[data-theme="dark"] .leaflet-control-attribution {
   border-color: var(--album-border);
   background: var(--album-surface);
 }
 
-[data-theme="dark"] .leaflet-control-zoom a,
-[data-theme="retro"] .leaflet-control-zoom a {
+[data-theme="dark"] .leaflet-control-zoom a {
   color: var(--text-primary);
 }
 
-[data-theme="dark"] .leaflet-tooltip,
-[data-theme="retro"] .leaflet-tooltip {
+[data-theme="dark"] .leaflet-tooltip {
   border-color: var(--album-border);
   color: var(--text-primary);
   background: var(--album-surface);
 }
 
-[data-theme="dark"] .leaflet-tooltip-top:before,
-[data-theme="retro"] .leaflet-tooltip-top:before {
+[data-theme="dark"] .leaflet-tooltip-top:before {
   border-top-color: var(--album-surface);
 }
 

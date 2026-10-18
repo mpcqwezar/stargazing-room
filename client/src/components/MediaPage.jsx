@@ -30,15 +30,11 @@ export default function MediaPage({ mediaData, mediaUpdatedAt, onPageChange }) {
 
   /* звёзды */
   useEffect(() => {
-    if (effectiveTheme !== "dark" && effectiveTheme !== "retro") return;
-
-    const starInterval = effectiveTheme === "retro" ? 150 : 1000;
+    if (effectiveTheme !== "dark") return;
 
     const interval = setInterval(() => {
       const star = document.createElement("div");
       star.className = "star";
-
-      if (effectiveTheme === "retro") star.setAttribute("data-retro", "true");
 
       star.style.left = "-10px";
       star.style.top = `${Math.random() * 40}vh`;
@@ -46,7 +42,7 @@ export default function MediaPage({ mediaData, mediaUpdatedAt, onPageChange }) {
 
       document.body.appendChild(star);
       setTimeout(() => star.remove(), 4000);
-    }, starInterval);
+    }, 1000);
 
     return () => clearInterval(interval);
   }, [effectiveTheme]);

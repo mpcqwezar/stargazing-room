@@ -24,7 +24,7 @@ export async function fetchRss(url) {
   const res = await fetch(url, {
     headers: {
       "User-Agent":
-        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) NewsAggregator/1.0"
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) StargazingRoom/1.0"
     }
   });
 

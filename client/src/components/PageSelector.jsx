@@ -9,7 +9,6 @@ export default function PageSelector({ currentPage, onPageChange }) {
     { id: "media", label: "📚 My Lists", title: "My Lists" },
     { id: "albums", label: "📷 Photos", title: "Photos" },
     { id: "map", label: "🗺️ Map", title: "Map" },
-    { id: "news", label: "RSS parser", title: "RSS parser" },
   ];
 
   // Close dropdown when clicking outside
